@@ -3,9 +3,9 @@ use nom::{character::complete::digit1, IResult};
 use std::str::FromStr;
 
 pub fn constant_val_parser(input: &str) -> IResult<&str, ConstantVal> {
-    let (no_used, used) = digit1(input)?;
+    let (unused, used) = digit1(input)?;
     let val = FromStr::from_str(used).unwrap();
-    Ok((no_used, ConstantVal::new(val)))
+    Ok((unused, ConstantVal::new(val)))
 }
 
 #[test]
