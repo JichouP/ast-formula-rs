@@ -9,7 +9,7 @@ pub fn constant_val_parser(input: &str) -> IResult<&str, ConstantVal> {
 }
 
 #[test]
-fn test_constant_val_parser() {
+fn constant_val_parser_test() {
     let (_, actual) = constant_val_parser("71ai38").unwrap();
     let expect = ConstantVal::new(71);
     assert_eq!(actual, expect);
