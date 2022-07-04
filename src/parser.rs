@@ -1,4 +1,4 @@
-pub mod constant_val;
+pub mod constant_val_parser;
 
 #[test]
 fn digit1_test() {
