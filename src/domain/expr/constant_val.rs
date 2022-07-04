@@ -1,4 +1,5 @@
 /// Express constant value.
+#[derive(Debug, PartialEq)]
 pub struct ConstantVal(i32);
 
 impl ConstantVal {
