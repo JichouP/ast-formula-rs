@@ -1,4 +1,4 @@
-use super::{constant_val::ConstantVal, Expr};
+use super::Expr;
 
 /// Enumerate operators
 pub enum BinaryOpKind {
@@ -43,6 +43,7 @@ impl BinaryOp {
 
 #[test]
 fn binary_op_test() {
+    use super::{constant_val::ConstantVal, Expr};
     // (7 * (3 + 5)) / (6 - 4)
     let binary_op = BinaryOp::new(
         BinaryOpKind::Div,
