@@ -1,4 +1,5 @@
 pub mod domain;
+pub mod parser;
 
 pub fn add(left: usize, right: usize) -> usize {
     let a = domain::expr::constant_val::ConstantVal::new(1);
