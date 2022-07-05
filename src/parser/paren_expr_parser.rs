@@ -8,7 +8,7 @@ use nom::{
 
 pub fn paren_expr_parser(input: &str) -> IResult<&str, Expr> {
     let (unused, (_, _, expr, _, _)) =
-        tuple((char('('), space0, expr_parser, space0, char(')')))(input).unwrap();
+        tuple((char('('), space0, expr_parser, space0, char(')')))(input)?;
     Ok((unused, expr))
 }
 

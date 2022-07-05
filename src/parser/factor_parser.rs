@@ -12,8 +12,7 @@ pub fn factor_parser(input: &str) -> IResult<&str, Expr> {
             paren_expr_parser,
         )),
         space0,
-    ))(input)
-    .unwrap();
+    ))(input)?;
     Ok((unused, expr))
 }
 
