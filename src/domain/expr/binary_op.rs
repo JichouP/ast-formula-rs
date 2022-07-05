@@ -1,7 +1,7 @@
 use super::Expr;
 
 /// Enumerate operators
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum BinaryOpKind {
     Add,
     Sub,
@@ -10,7 +10,7 @@ pub enum BinaryOpKind {
 }
 
 /// Express binary operator.
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BinaryOp {
     /// Kind of binary operator.
     op_kind: BinaryOpKind,

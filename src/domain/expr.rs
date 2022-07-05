@@ -3,7 +3,7 @@ use self::{binary_op::BinaryOp, constant_val::ConstantVal};
 pub mod binary_op;
 pub mod constant_val;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Expr {
     ConstantVal(ConstantVal),
     BinaryOp(Box<BinaryOp>),
