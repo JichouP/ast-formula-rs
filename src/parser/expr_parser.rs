@@ -7,7 +7,7 @@ use crate::{
 };
 use nom::{
     branch::alt, character::complete::char, character::complete::space0, combinator::map,
-    sequence::tuple, IResult,
+    error::Error, sequence::tuple, IResult,
 };
 
 pub fn expr_parser(input: &str) -> IResult<&str, Expr> {
@@ -44,6 +44,13 @@ pub fn expr_parser(input: &str) -> IResult<&str, Expr> {
         unused = new_unused;
     }
 
+    if unused != "" {
+        return Err(nom::Err::Error(Error::new(
+            "void",
+            nom::error::ErrorKind::Eof,
+        )));
+    }
+
     Ok((unused, tmp_left_expr.clone()))
 }
 
@@ -68,7 +75,7 @@ fn exprs_parser_test() {
     let (_, actual) = expr_parser("4*3/2+1").unwrap();
     assert_eq!(actual, expect);
 
-    let (_, actual) = expr_parser(" 4 *\t 3 /   2 + 1  \n").unwrap();
+    let (_, actual) = expr_parser(" 4 *\t 3 /   2 + 1  ").unwrap();
     assert_eq!(actual, expect);
     assert_eq!(actual.eval(), 4 * 3 / 2 + 1);
 
