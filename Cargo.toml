@@ -8,10 +8,14 @@ version = "0.1.0"
 [lib]
 path = "src/lib.rs"
 
+[dependencies]
+ctrlc = {version = "3.2.2", optional = true}
+nom = "7.1.1"
+
+[features]
+build-binary = ["ctrlc"]
+
 [[bin]]
 name = "calc"
 path = "src/bin.rs"
-
-[dependencies]
-ctrlc = "3.2.2"
-nom = "7.1.1"
+required-features = ["build-binary"]
