@@ -7,7 +7,7 @@ use crate::{
 };
 use nom::{
     branch::alt, character::complete::char, character::complete::space0, combinator::map,
-    error::Error, sequence::tuple, IResult,
+    sequence::tuple, IResult,
 };
 
 pub fn expr_parser(input: &str) -> IResult<&str, Expr> {
@@ -42,13 +42,6 @@ pub fn expr_parser(input: &str) -> IResult<&str, Expr> {
         let (new_unused, used) = binary_parser(unused, tmp_left_expr.clone())?;
         tmp_left_expr = used;
         unused = new_unused;
-    }
-
-    if unused != "" {
-        return Err(nom::Err::Error(Error::new(
-            "void",
-            nom::error::ErrorKind::Eof,
-        )));
     }
 
     Ok((unused, tmp_left_expr.clone()))

@@ -1,10 +1,10 @@
-use parser::expr_parser::expr_parser;
+use parser::formula_parser::formula_parser;
 
 pub mod domain;
 pub mod parser;
 
 pub fn calc(input: &str) -> Result<i32, &str> {
-    let res = expr_parser(input);
+    let res = formula_parser(input);
     match res {
         Ok((_unused, expr)) => Ok(expr.eval()),
         Err(_) => Err("syntax error"),
