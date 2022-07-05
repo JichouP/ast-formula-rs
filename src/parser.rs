@@ -1,6 +1,7 @@
 pub mod constant_val_parser;
 pub mod expr_parser;
 pub mod paren_expr_parser;
+pub mod term_parser;
 
 #[test]
 fn digit1_test() {
