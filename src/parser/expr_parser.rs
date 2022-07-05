@@ -39,7 +39,7 @@ pub fn expr_parser(input: &str) -> IResult<&str, Expr> {
     let (mut unused, mut tmp_left_expr) = term_parser(input)?;
 
     while let Ok((_, _)) = op_kind_parser(unused) {
-        let (new_unused, used) = binary_parser(unused, tmp_left_expr.clone()).unwrap();
+        let (new_unused, used) = binary_parser(unused, tmp_left_expr.clone())?;
         tmp_left_expr = used;
         unused = new_unused;
     }
