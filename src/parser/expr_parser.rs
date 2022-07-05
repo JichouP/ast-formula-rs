@@ -6,12 +6,8 @@ use crate::{
     parser::term_parser::term_parser,
 };
 use nom::{
-    branch::alt,
-    character::complete::char,
-    character::complete::{line_ending, space0},
-    combinator::map,
-    sequence::tuple,
-    IResult,
+    branch::alt, character::complete::char, character::complete::space0, combinator::map,
+    sequence::tuple, IResult,
 };
 
 pub fn expr_parser(input: &str) -> IResult<&str, Expr> {
@@ -47,8 +43,6 @@ pub fn expr_parser(input: &str) -> IResult<&str, Expr> {
         tmp_left_expr = used;
         unused = new_unused;
     }
-
-    let (_, _) = line_ending(unused)?;
 
     Ok((unused, tmp_left_expr.clone()))
 }
