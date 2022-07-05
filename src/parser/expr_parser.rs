@@ -52,7 +52,7 @@ fn exprs_parser_test() {
     use crate::domain::expr::{binary_op::BinaryOpKind, constant_val::ConstantVal, Expr};
 
     let (_, actual1) = expr_parser("4*3/2+1").unwrap();
-    let (_, actual2) = expr_parser("4 *\t 3 /   2 + 1").unwrap();
+    let (_, actual2) = expr_parser(" 4 *\t 3 /   2 + 1  \n").unwrap();
     let expect = Expr::BinaryOp(Box::new(BinaryOp::new(
         BinaryOpKind::Add,
         Expr::BinaryOp(Box::new(BinaryOp::new(
@@ -68,5 +68,5 @@ fn exprs_parser_test() {
     )));
     assert_eq!(actual1, expect);
     assert_eq!(actual2, expect);
-    assert_eq!(actual1.eval(), 4 * 3 / 2 + 1)
+    assert_eq!(actual1.eval(), 4 * 3 / 2 + 1);
 }
