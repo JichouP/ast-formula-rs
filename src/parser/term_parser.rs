@@ -53,7 +53,7 @@ fn term_parser_test() {
     use crate::domain::expr::{binary_op::BinaryOpKind, constant_val::ConstantVal, Expr};
 
     let (unused, actual1) = term_parser("4*3/2+1").unwrap();
-    let (_, actual2) = term_parser("4 * 3 / 2 + 1").unwrap();
+    let (_, actual2) = term_parser("4 *\t 3 /   2 + 1").unwrap();
     let expect = Expr::BinaryOp(Box::new(BinaryOp::new(
         BinaryOpKind::Div,
         Expr::BinaryOp(Box::new(BinaryOp::new(
