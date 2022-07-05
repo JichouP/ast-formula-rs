@@ -9,9 +9,9 @@ version = "0.1.0"
 path = "src/lib.rs"
 
 [dependencies]
-# ctrlc = "3.2.2"
+ctrlc = "3.2.2"
 nom = "7.1.1"
 
-# [[bin]]
-# name = "calc"
-# path = "src/bin.rs"
+[[bin]]
+name = "calc"
+path = "src/bin.rs"
